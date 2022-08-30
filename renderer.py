@@ -47,5 +47,5 @@ def draw_pieces(WIN):
 
     for board_coordinate in BOARD_COORDINATES.items():
         if board_coordinate[1] != "":
-            print("Rendering pawn at: " + str(SQUARES_COORDINATES[board_coordinate[0]][0]) + ", " + str(SQUARES_COORDINATES[board_coordinate[0]][1]))
-            draw_obj(WIN, PIECES_DATABASE[board_coordinate[1]], SQUARES_COORDINATES[board_coordinate[0]][0], SQUARES_COORDINATES[board_coordinate[0]][1])
+            # TEMPORARY FIX: MOVING THE PIECES 1 SQUARE_WIDTH BEHIND
+            draw_obj(WIN, PIECES_DATABASE[board_coordinate[1]], SQUARES_COORDINATES[board_coordinate[0]][0] - SQUARES_WIDTH, SQUARES_COORDINATES[board_coordinate[0]][1])
