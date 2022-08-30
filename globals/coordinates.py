@@ -136,6 +136,18 @@ BOARD_COORDINATES = {
     "h8": "",
 }
 
+def reset_board():
+    int_to_letter_dict = {
+        1: "a", 2: "b", 3: "c",
+        4: "d", 5: "e", 6: "f",
+        7: "g", 8: "h"
+    }
+
+    # White side pawns
+    for i in range(8):
+        BOARD_COORDINATES[int_to_letter_dict.get(i + 1) + str(2)] = "w_pawn"
+        
+
 def get_square(pos):
     x, y = pos
     squareFound = None

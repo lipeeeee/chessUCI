@@ -1,8 +1,7 @@
-import os
 import globals.coordinates as coordinates
-from models.pieces.w_pawn import w_pawn
 import pygame, renderer
 import globals.globals as globals, globals.colors as colors
+from models.pieces import load_image_piece
 
 # Setup game window
 WIN = pygame.display.set_mode((globals.WIDTH, globals.HEIGHT))
@@ -13,7 +12,11 @@ def game_loop():
     clock = pygame.time.Clock()
 
     renderer.draw_window(WIN, colors.BLACK)
+
+    # setup board
+    coordinates.reset_board()
     renderer.draw_board(WIN)
+    renderer.draw_pieces(WIN)
 
     while running:
         # Make sure the FPS_CAP is being respected
