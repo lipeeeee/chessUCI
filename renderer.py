@@ -1,6 +1,6 @@
 import pygame
 from globals.coordinates import SQUARES_COORDINATES
-from globals.globals import HEIGHT, SQUARES_HEIGHT, SQUARES_WIDTH, WIDTH
+from globals.globals import BOARD_START_X, SQUARES_HEIGHT, SQUARES_WIDTH, BOARD_START_Y
 from models.s_white import s_white
 from models.s_black import s_black
 
@@ -13,10 +13,8 @@ def draw_obj(WIN, obj, x, y):
     pygame.display.update()
 
 # Draws board from a1 to h8 and calculates coordinates for all squares
-def draw_board(WIN):
-    BOARD_START_X, BOARD_START_Y = 50, HEIGHT - SQUARES_HEIGHT
+def draw_board(WIN):  
     cur_x, cur_y = BOARD_START_X, BOARD_START_Y
-
     white = True # Flag to know wether to render white or black squares
     letter_to_int_dict = {
         1: "a", 2: "b", 3: "c",
@@ -41,5 +39,3 @@ def draw_board(WIN):
         white = not white
         cur_y -= SQUARES_HEIGHT
         cur_x = BOARD_START_X 
-
-    print(SQUARES_COORDINATES)
