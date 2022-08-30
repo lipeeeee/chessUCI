@@ -1,9 +1,7 @@
 import pygame
 from globals.coordinates import BOARD_COORDINATES, SQUARES_COORDINATES
 from globals.globals import BOARD_START_X, SQUARES_HEIGHT, SQUARES_WIDTH, BOARD_START_Y
-from models.pieces import PIECES_DATABASE
-from models.s_white import s_white
-from models.s_black import s_black
+from models.pieces import PIECES_DATABASE, SQUARES_DATABASE
 
 def draw_window(WIN, color):
     WIN.fill(color)
@@ -26,9 +24,9 @@ def draw_board(WIN):
     for i in range(8):
         for j in range(8):
             if white:
-                draw_obj(WIN, s_white.IMAGE, cur_x, cur_y)
+                draw_obj(WIN, SQUARES_DATABASE["s_white"], cur_x, cur_y)
             else:
-                draw_obj(WIN, s_black.IMAGE, cur_x, cur_y)
+                draw_obj(WIN, SQUARES_DATABASE["s_black"], cur_x, cur_y)
 
             white = not white
             cur_x += SQUARES_WIDTH

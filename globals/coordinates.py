@@ -146,7 +146,28 @@ def reset_board():
     # White side pawns
     for i in range(8):
         BOARD_COORDINATES[int_to_letter_dict.get(i + 1) + str(2)] = "w_pawn"
-        
+    
+    BOARD_COORDINATES["a1"] = "w_rook"
+    BOARD_COORDINATES["h1"] = "w_rook"
+    BOARD_COORDINATES["b1"] = "w_knight"
+    BOARD_COORDINATES["g1"] = "w_knight"
+    BOARD_COORDINATES["c1"] = "w_bishop"
+    BOARD_COORDINATES["f1"] = "w_bishop"
+    BOARD_COORDINATES["d1"] = "w_queen"
+    BOARD_COORDINATES["e1"] = "w_king"
+
+    # Black side pawns
+    for i in range(8):
+        BOARD_COORDINATES[int_to_letter_dict.get(i + 1) + str(7)] = "b_pawn"
+    
+    BOARD_COORDINATES["a8"] = "b_rook"
+    BOARD_COORDINATES["h8"] = "b_rook"
+    BOARD_COORDINATES["b8"] = "b_knight"
+    BOARD_COORDINATES["g8"] = "b_knight"
+    BOARD_COORDINATES["c8"] = "b_bishop"
+    BOARD_COORDINATES["f8"] = "b_bishop"
+    BOARD_COORDINATES["d8"] = "b_queen"
+    BOARD_COORDINATES["e8"] = "b_king"
 
 def get_square(pos):
     x, y = pos
