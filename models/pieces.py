@@ -19,5 +19,6 @@ PIECES_DATABASE = {
 
 SQUARES_DATABASE = {
     "s_white": load_image_square("s_white"),
-    "s_black": load_image_square("s_black")
+    "s_black": load_image_square("s_black"),
+    "s_highlited": load_image_square("s_highlited")
 }

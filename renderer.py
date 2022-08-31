@@ -10,13 +10,17 @@ def draw_obj(WIN, obj, x, y):
     pygame.display.update()
 
 # Draws board from a1 to h8 and calculates coordinates for all squares
-def draw_board(WIN):  
+def draw_board(WIN, highlited_piece):  
     cur_x, cur_y = BOARD_START_X, BOARD_START_Y
     white = True # Flag to know wether to render white or black squares
 
     for i in range(8):
         for j in range(8):
-            if white:
+            square_code = str(INT_TO_LETTER_DICT.get(j + 1) + str(i + 1))
+
+            if square_code == highlited_piece:
+                draw_obj(WIN, SQUARES_DATABASE["s_highlited"], cur_x, cur_y)
+            elif white:
                 draw_obj(WIN, SQUARES_DATABASE["s_white"], cur_x, cur_y)
             else:
                 draw_obj(WIN, SQUARES_DATABASE["s_black"], cur_x, cur_y)
@@ -25,7 +29,7 @@ def draw_board(WIN):
             cur_x += SQUARES_WIDTH
 
             # Map coords
-            SQUARES_COORDINATES[str(INT_TO_LETTER_DICT.get(j + 1) + str(i + 1))] = (cur_x, cur_y)
+            SQUARES_COORDINATES[square_code] = (cur_x, cur_y)
 
         white = not white
         cur_y -= SQUARES_HEIGHT
@@ -59,17 +63,17 @@ def draw_coordinates(WIN):
         cur_x += SQUARES_WIDTH
 
 def draw_window(WIN):
-    draw_board(WIN)
+    draw_board(WIN, None)
     draw_pieces(WIN)
     draw_coordinates(WIN)
     
     pygame.display.update()
 
-def draw_highlited_piece(WIN, highlited_piece):
+def draw_highlited_piece_text(WIN, highlited_piece):
     x, y = BOARD_START_X + (SQUARES_WIDTH * 8) + 40, 15
 
     highlited_piece_text = FONT_MONOSPACE.render("HIGHLITED PIECE: " + str(highlited_piece), 1, colors.SATURATED_GREEN)
-    pygame.draw.rect(WIN, colors.BLACK, pygame.Rect(x, y, 170, 20))
+    pygame.draw.rect(WIN, colors.BLACK, pygame.Rect(x, y, 190, 20))
     draw_obj(WIN, highlited_piece_text, x, y)
     
     pygame.display.update()
