@@ -1,2 +1,3 @@
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
+SATURATED_GREEN = (63, 252, 0)

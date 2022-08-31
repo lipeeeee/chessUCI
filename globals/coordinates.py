@@ -1,4 +1,4 @@
-from globals.globals import SQUARES_HEIGHT, SQUARES_WIDTH, BOARD_START_X
+from globals.globals import INT_TO_LETTER_DICT, SQUARES_HEIGHT, SQUARES_WIDTH, BOARD_START_X
 
 # x, y of all squares
 SQUARES_COORDINATES = {
@@ -137,15 +137,9 @@ BOARD_COORDINATES = {
 }
 
 def reset_board():
-    int_to_letter_dict = {
-        1: "a", 2: "b", 3: "c",
-        4: "d", 5: "e", 6: "f",
-        7: "g", 8: "h"
-    }
-
     # White side pawns
     for i in range(8):
-        BOARD_COORDINATES[int_to_letter_dict.get(i + 1) + str(2)] = "w_pawn"
+        BOARD_COORDINATES[INT_TO_LETTER_DICT.get(i + 1) + str(2)] = "w_pawn"
     
     BOARD_COORDINATES["a1"] = "w_rook"
     BOARD_COORDINATES["h1"] = "w_rook"
@@ -158,7 +152,7 @@ def reset_board():
 
     # Black side pawns
     for i in range(8):
-        BOARD_COORDINATES[int_to_letter_dict.get(i + 1) + str(7)] = "b_pawn"
+        BOARD_COORDINATES[INT_TO_LETTER_DICT.get(i + 1) + str(7)] = "b_pawn"
     
     BOARD_COORDINATES["a8"] = "b_rook"
     BOARD_COORDINATES["h8"] = "b_rook"
@@ -177,7 +171,6 @@ def get_square(pos):
     if (x < BOARD_START_X + (8 * SQUARES_WIDTH) and
     x + (8 * SQUARES_WIDTH) > BOARD_START_X):
         
-        #print("POSITION CLICKED: " + str(pos))
         for square, coordinates in SQUARES_COORDINATES.items():
             # ABBA colision algorithm
             if (x < coordinates[0] + SQUARES_WIDTH and
