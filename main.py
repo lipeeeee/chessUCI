@@ -1,10 +1,9 @@
 import pygame
 pygame.init()
-from utils.text_utils import FONT_MONOSPACE
 import globals.coordinates as coordinates
+import utils.board_utils as board_utils
 import renderer
 import globals.globals as globals, globals.colors as colors
-from models.pieces import load_image_piece
 
 # Setup game window
 WIN = pygame.display.set_mode((globals.WIDTH, globals.HEIGHT))
@@ -23,7 +22,7 @@ def game_loop():
     global highlited_piece
 
     # Setup window
-    coordinates.reset_board()
+    board_utils.reset_board()
     renderer.draw_window(WIN)
 
     while running:
@@ -37,18 +36,21 @@ def game_loop():
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 # Left Click
                 if event.button == 1:
-                    # if click is on board and there is a piece on the square highlit the piece
-                    highlit_piece(coordinates.get_square(pygame.mouse.get_pos()))
+                    # if click is on board and there is a piece on the square highlite the piece
+                    highlite_piece(board_utils.get_square(pygame.mouse.get_pos()))
 
             elif event.type == PIECE_SELECTED:
                 # TODO: show legal moves
+
+                if highlited_piece != None:
+                    pass
 
                 pass
 
 
     pygame.quit()
 
-def highlit_piece(piece):
+def highlite_piece(piece):
     global highlited_piece
     highlited_piece = piece
 

@@ -2,7 +2,8 @@ import pygame
 import globals.colors as colors
 from globals.coordinates import BOARD_COORDINATES, SQUARES_COORDINATES
 from globals.globals import BOARD_START_X, INT_TO_LETTER_DICT, SQUARES_HEIGHT, SQUARES_WIDTH, BOARD_START_Y
-from models.pieces import PIECES_DATABASE, SQUARES_DATABASE
+from models.square import Square
+from utils.img_utils import load_image_piece, load_image_square
 from utils.text_utils import FONT_BOARD_COORDINATES, FONT_MONOSPACE
 
 def draw_obj(WIN, obj, x, y):
@@ -14,16 +15,21 @@ def draw_board(WIN, highlited_piece):
     cur_x, cur_y = BOARD_START_X, BOARD_START_Y
     white = True # Flag to know wether to render white or black squares
 
+    # Squares
+    w_square = Square("s_white")
+    b_square = Square("s_black")
+    h_square = Square("s_highlited")
+
     for i in range(8):
         for j in range(8):
             square_code = str(INT_TO_LETTER_DICT.get(j + 1) + str(i + 1))
 
             if square_code == highlited_piece:
-                draw_obj(WIN, SQUARES_DATABASE["s_highlited"], cur_x, cur_y)
+                draw_obj(WIN, load_image_square(h_square.code), cur_x, cur_y)
             elif white:
-                draw_obj(WIN, SQUARES_DATABASE["s_white"], cur_x, cur_y)
+                draw_obj(WIN, load_image_square(w_square.code), cur_x, cur_y)
             else:
-                draw_obj(WIN, SQUARES_DATABASE["s_black"], cur_x, cur_y)
+                draw_obj(WIN, load_image_square(b_square.code), cur_x, cur_y)
 
             white = not white
             cur_x += SQUARES_WIDTH
@@ -39,9 +45,11 @@ def draw_pieces(WIN):
     #TODO : FIX PIECES RENDERING ONE SQUARE_WIDTH ABOVE THAN THEY SHOULD
 
     for board_coordinate in BOARD_COORDINATES.items():
-        if board_coordinate[1] != "":
-            # TEMPORARY FIX: MOVING THE PIECES 1 SQUARE_WIDTH BEHIND
-            draw_obj(WIN, PIECES_DATABASE[board_coordinate[1]], SQUARES_COORDINATES[board_coordinate[0]][0] - SQUARES_WIDTH, SQUARES_COORDINATES[board_coordinate[0]][1])
+        if board_coordinate[1] != None:
+            piece = board_coordinate[1]
+            square_x, square_y = SQUARES_COORDINATES[board_coordinate[0]][0] - SQUARES_WIDTH, SQUARES_COORDINATES[board_coordinate[0]][1]
+
+            draw_obj(WIN, load_image_piece(piece.code), square_x, square_y)
 
 def draw_coordinates(WIN):
     label = FONT_BOARD_COORDINATES.render("", 1, colors.WHITE)
