@@ -1,6 +1,5 @@
 import pygame
 pygame.init()
-import globals.coordinates as coordinates
 import utils.board_utils as board_utils
 import renderer
 import globals.globals as globals, globals.colors as colors
