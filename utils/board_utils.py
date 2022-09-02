@@ -2,7 +2,7 @@ from globals.coordinates import BOARD_COORDINATES, SQUARES_COORDINATES
 from globals.globals import INT_TO_LETTER_DICT, SQUARES_HEIGHT, SQUARES_WIDTH, BOARD_START_X
 from models.piece import Piece
 
-def reset_board():
+def reset_board()  :
     # White side pawns
     for i in range(8):
         BOARD_COORDINATES[INT_TO_LETTER_DICT.get(i + 1) + str(2)] = Piece("w_pawn")
