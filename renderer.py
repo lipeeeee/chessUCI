@@ -22,7 +22,6 @@ def draw_board(WIN, highlited_square, legal_moves):
             if square_code == highlited_square:
                 draw_obj(WIN, load_image_square(SQUARES_DATABASE["h_square"].code), cur_x, cur_y)
             elif legal_moves is not None and square_code in legal_moves:
-                print("pog")
                 if white:
                     draw_obj(WIN, load_image_square(SQUARES_DATABASE["w_lm_square"].code), cur_x, cur_y)
                 else:
