@@ -1,9 +1,11 @@
 import pygame
+
 pygame.init()
-import utils.board_utils as board_utils
-import renderer
-import globals.globals as globals, globals.colors as colors
+import globals.colors as colors
+import globals.globals as globals
 import piece_logic
+import renderer
+import utils.board_utils as board_utils
 
 # Setup game window
 WIN = pygame.display.set_mode((globals.WIDTH, globals.HEIGHT))

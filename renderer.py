@@ -1,10 +1,12 @@
 import pygame
 import globals.colors as colors
 from globals.coordinates import BOARD_COORDINATES, SQUARES_COORDINATES
-from globals.globals import BOARD_START_X, INT_TO_LETTER_DICT, SQUARES_HEIGHT, SQUARES_WIDTH, BOARD_START_Y
 from globals.global_models import SQUARES_DATABASE as SQUARES_DATABASE
+from globals.globals import (BOARD_START_X, BOARD_START_Y, INT_TO_LETTER_DICT,
+                             SQUARES_HEIGHT, SQUARES_WIDTH)
 from utils.img_utils import load_image_piece, load_image_square
 from utils.text_utils import FONT_BOARD_COORDINATES, FONT_MONOSPACE
+
 
 def draw_obj(WIN, obj, x, y):
     WIN.blit(obj, (x, y))

@@ -1,6 +1,6 @@
 from globals.coordinates import BOARD_COORDINATES
-from models.piece import Piece
 from globals.globals import INT_TO_LETTER_DICT, LETTER_TO_INT_DICT
+from models.piece import Piece
 
 def get_legal_moves(square_code):
     legal_moves = []
