@@ -14,7 +14,7 @@ def draw_obj(WIN, obj, x, y):
 def draw_board(WIN, highlited_square, legal_moves):  
     cur_x, cur_y = BOARD_START_X, BOARD_START_Y
     white = True # Flag to know wether to render white or black squares
-    print(legal_moves)
+    
     for i in range(8):
         for j in range(8):
             square_code = str(INT_TO_LETTER_DICT.get(j + 1) + str(i + 1))
