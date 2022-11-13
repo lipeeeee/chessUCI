@@ -22,10 +22,7 @@ def draw_board(WIN, highlited_square, legal_moves):
             if square_code == highlited_square:
                 draw_obj(WIN, load_image_square(SQUARES_DATABASE["h_square"].code), cur_x, cur_y)
             elif legal_moves is not None and square_code in legal_moves:
-                if white:
-                    draw_obj(WIN, load_image_square(SQUARES_DATABASE["w_lm_square"].code), cur_x, cur_y)
-                else:
-                    draw_obj(WIN, load_image_square(SQUARES_DATABASE["b_lm_square"].code), cur_x, cur_y)
+                draw_obj(WIN, load_image_square("lm_square"), cur_x, cur_y)
             elif white:
                 draw_obj(WIN, load_image_square(SQUARES_DATABASE["w_square"].code), cur_x, cur_y)
             else:
@@ -41,16 +38,20 @@ def draw_board(WIN, highlited_square, legal_moves):
         cur_y -= SQUARES_HEIGHT
         cur_x = BOARD_START_X 
 
-    draw_pieces(WIN)
+    draw_pieces(WIN, legal_moves)
     draw_coordinates(WIN)
 
-def draw_pieces(WIN):
+def draw_pieces(WIN, legal_moves):
     for board_coordinate in BOARD_COORDINATES.items():
         if board_coordinate[1] != None:
+            # TODO: Check if square is a legal_move
             piece = board_coordinate[1]
             square_x, square_y = SQUARES_COORDINATES[board_coordinate[0]][0] - SQUARES_WIDTH, SQUARES_COORDINATES[board_coordinate[0]][1]
 
             draw_obj(WIN, load_image_piece(piece.code), square_x, square_y)
+            # Check if legal move square
+            if legal_moves is not None and board_coordinate[0] in legal_moves:
+                draw_obj(WIN, load_image_square("lm_square"), square_x, square_y)
 
 def draw_coordinates(WIN):
     label = FONT_BOARD_COORDINATES.render("", 1, colors.WHITE)

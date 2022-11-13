@@ -33,8 +33,7 @@ def get_legal_moves(square_code):
             # L shape
             square_letter = INT_TO_LETTER_DICT.get(LETTER_TO_INT_DICT.get(square_code[0]) + 2)
             next_square = square_letter + str(int(square_code[1]) + 1)
-            legal_moves.append()
-            pass 
+            legal_moves.append(next_square) 
 
 
     return legal_moves
